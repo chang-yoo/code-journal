@@ -1,0 +1,81 @@
+body {
+  background-color: #f0f0f0;
+}
+
+header {
+  background-color: #562b80;
+  color: white;
+}
+
+.font-header {
+  font-family: "Proza Libre", sans-serif;
+  font-weight: 400;
+}
+
+input,
+textarea {
+  border-radius: 5px;
+  border: 1px solid #b6b6b6;
+  height: 40px;
+}
+
+textarea {
+  resize: none;
+  height: 130px;
+}
+
+label,
+input,
+textarea {
+  width: 100%;
+  display: block;
+}
+
+input {
+  margin-bottom: 1.5rem;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #562b80;
+}
+
+textarea:focus {
+  outline: none;
+  border: 2px solid #562b80;
+}
+
+.default-image {
+  border-radius: 5px;
+  width: 100%;
+}
+
+.default-image img {
+  object-fit: cover;
+}
+
+label {
+  font-family: "Proza Libre", sans-serif;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.margin-top {
+  margin-top: 1.5rem;
+}
+
+button {
+  background-color: #562b80;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #562b80;
+  padding: 0.3rem 1rem;
+  font-family: "Open sans", sans-serif;
+  font-weight: 400;
+}
+
+.save-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0;
+}
