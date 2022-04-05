@@ -1,104 +1,81 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  padding: 0;
-  margin: 0;
   background-color: #f0f0f0;
 }
 
-p {
-  margin: auto;
+header {
   background-color: #562b80;
   color: white;
-  height: 100%;
-  size: 20px;
-  padding-left: 365px;
-  padding-top: 15px;
-  padding-bottom: 11px;
 }
 
-.container {
-  width: 100%;
-  height: 795px;
-}
-
-.row {
-  display: flex;
-}
-
-.notes {
-  position: absolute;
-  bottom: 100px;
-  left: 100px;
-}
-
-.height-100 {
-  height: 100%;
-}
-
-.col-full {
-  width: 100%;
-}
-
-.col-one-half {
-  flex-basis: 50%;
-  margin: auto;
-}
-
-#journal-notes {
-  resize: none;
-  height: 149px;
-}
-
-img {
-  width: 341px;
-  height: 341px;
+.font-header {
+  font-family: "Proza Libre", sans-serif;
+  font-weight: 400;
 }
 
 input,
 textarea {
   border-radius: 5px;
-  border-width: 1px;
-  border-style: solid;
-  width: 341px;
+  border: 1px solid #b6b6b6;
   height: 40px;
 }
 
+textarea {
+  resize: none;
+  height: 130px;
+}
+
+label,
+input,
+textarea {
+  width: 100%;
+  display: block;
+}
+
+input {
+  margin-bottom: 1.5rem;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #562b80;
+}
+
+textarea:focus {
+  outline: none;
+  border: 2px solid #562b80;
+}
+
+.default-image {
+  border-radius: 5px;
+  width: 100%;
+}
+
+.default-image img {
+  object-fit: cover;
+}
+
 label {
-  margin-bottom: 1rem;
+  font-family: "Proza Libre", sans-serif;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
-.grey-border {
-  border-color: #b6b6b6;
-}
-
-.purple-border {
-  border-color: #7c5c9d;
-}
-
-.col-82 {
-  width: 82%;
-  padding: auto;
-  margin: auto;
-}
-
-.save-btn {
-  display: flex;
-  align-items: center;
+.margin-top {
+  margin-top: 1.5rem;
 }
 
 button {
   background-color: #562b80;
   color: white;
   border-radius: 5px;
-  border-color: #562b80;
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid #562b80;
   padding: 0.3rem 1rem;
+  font-family: "Open sans", sans-serif;
+  font-weight: 400;
 }
 
-#entry {
-  position: relative;
+.save-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0;
 }

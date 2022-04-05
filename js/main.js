@@ -1,60 +1,52 @@
 /* global data */
 /* exported data */
-/*
-var $entry = document.querySelector('#entry');
-console.log($entry);
 
-var $title = document.querySelector('#journal-title');
-console.log($title);
+var $form = document.querySelector('form');
+
+var $defaultImage = document.querySelector('.default-image');
 
 var $url = document.querySelector('#journal-URL');
-console.log($url);
 
+$url.addEventListener('input', function updateImage(event) {
+  var newImage = $form.elements.photo.value;
+  $defaultImage.setAttribute('src', newImage);
+});
+
+var $title = document.querySelector('#journal-title');
 var $notes = document.querySelector('#journal-notes');
-console.log($notes);
-
-var $img = document.querySelector('img');
-console.log($img);
-
-var $input = document.querySelectorAll('input');
-
-$title.addEventListener('focus', handleFocus);
 $title.addEventListener('input', handleInput);
-$url.addEventListener('input', handleInput);
-$url.addEventListener('focus', handleFocus);
-$notes.addEventListener('focus', handleFocus);
 $notes.addEventListener('input', handleInput);
 
 function handleInput(event) {
-  if (event.target !== $url) {
-    console.log(event.target.value);
-  } else if (event.target === $url) {
-    $img.setAttribute('href', 'event.target.value');
-  }
 }
 
-function handleFocus(event) {
-  $input.className = 'purple-border';
-}
-
-var output = [];
-
-output += nextEntryId
+var datas = {
+  view: 'entry-form',
+  entries: [],
+  editing: null,
+  nextEntryId: 1
+};
 
 function handleSubmit(event) {
   event.preventDefault();
-  var valueTitle = $entry.elements.title.value;
-  var valuePhoto = $entry.elements.photo.value;
-  var valueNotes = $entry.elements.notes.value;
-  var data = {
-    name: valueTitle,
-    photo: valuePhoto,
-    notes: valueNotes
+  var $titleValue = $form.elements.title.value;
+  var $photoValue = $form.elements.photo.value;
+  var $notesValue = $form.elements.notes.value;
+  var dataValue = {
+    title: $titleValue,
+    photo: $photoValue,
+    notes: $notesValue,
+    nextEntryId: datas.nextEntryId
   };
-  output.push(data);
-  $entry.reset();
-  return output;
+  datas.nextEntryId++;
+  datas.entries.unshift(dataValue);
+  $defaultImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $form.reset();
 }
 
-$entry.addEventListener('submit', handleSubmit);
-*/
+$form.addEventListener('submit', handleSubmit);
+
+window.addEventListener('beforeunload', function storage(event) {
+  var JSONData = JSON.stringify(datas.entries);
+  localStorage.setItem('datas', JSONData);
+});
