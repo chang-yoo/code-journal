@@ -7,6 +7,7 @@ header {
   color: white;
 }
 
+li,
 .font-header {
   font-family: "Proza Libre", sans-serif;
   font-weight: 400;
@@ -78,4 +79,18 @@ button {
   display: flex;
   justify-content: flex-end;
   margin: 1rem 0;
+}
+
+li,
+a {
+  text-decoration: none;
+  list-style: none;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-right: 1rem;
+  padding: 0;
 }
