@@ -7,7 +7,10 @@ header {
   color: white;
 }
 
-li,
+.display-flex {
+  display: flex;
+}
+
 .font-header {
   font-family: "Proza Libre", sans-serif;
   font-weight: 400;
@@ -46,11 +49,13 @@ textarea:focus {
   border: 2px solid #562b80;
 }
 
+.entry-image,
 .default-image {
   border-radius: 5px;
   width: 100%;
 }
 
+.entry-image img,
 .default-image img {
   object-fit: cover;
 }
@@ -83,14 +88,42 @@ button {
 
 li,
 a {
-  text-decoration: none;
   list-style: none;
 }
 
-ul {
+button:active,
+a:active {
+  transform: translateY(0.25rem);
+}
+
+h4 {
+  margin-left: 1rem;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.entries-btn {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-right: 1rem;
+}
+
+ul {
   padding: 0;
+}
+
+p,
+h1 {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+li {
+  margin: auto 0;
 }

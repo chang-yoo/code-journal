@@ -32,3 +32,8 @@
     width: 50%;
   }
 }
+
+.column-half-padding-left {
+  width: 50%;
+  padding: 0 1.5rem 0 0;
+}
