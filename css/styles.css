@@ -5,10 +5,9 @@ body {
 header {
   background-color: #562b80;
   color: white;
-}
-
-.display-flex {
-  display: flex;
+  padding: auto;
+  margin: auto;
+  width: 100%;
 }
 
 .font-header {

@@ -24,7 +24,7 @@ function handleSubmit(event) {
     note: $notesValue,
     nextEntryId: data.nextEntryId
   };
-  data.entries.push(dataValue);
+  data.entries.unshift(dataValue);
   data.nextEntryId++;
   $defaultImage.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
@@ -34,10 +34,9 @@ function handleSubmit(event) {
 }
 $form.addEventListener('submit', handleSubmit);
 
-var $ul = document.querySelector('.domCreation');
+var $ul = document.querySelector('.domEntry');
 
 function newEntries(object) {
-  event.preventDefault();
   var $domList = document.createElement('li');
   $domList.setAttribute('class', 'domList row');
 
@@ -47,7 +46,7 @@ function newEntries(object) {
 
   var $img = document.createElement('img');
   $img.setAttribute('src', object.photo);
-  $img.setAttribute('class', 'entry-image');
+  $img.setAttribute('class', 'entry-image padding-left-none');
   $firstDiv.appendChild($img);
 
   var $secondDiv = document.createElement('div');
