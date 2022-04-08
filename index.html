@@ -16,48 +16,67 @@
 </head>
 <body>
   <header>
-    <div class="container">
-      <div class="row">
-        <h3 class="column-full font-header">Code Journal</h3>
-      </div>
+    <div class="container padding">
+      <ur class="row">
+        <li><h3 class="font-header">Code Journal</h3></li>
+        <li><a href="#"><h4 class="font-header">Entries</h4></a></li>
+      </ur>
     </div>
   </header>
-  <main class="container">
-    <div data-view="entry-form">
+  <main>
+    <div class="container" data-view="entry-form">
+      <div class="form-yet-hidden">
+        <div class="row">
+          <div class="column-full">
+            <h1>New Entry</h1>
+          </div>
+          <form class="row">
+            <div class="column-half">
+              <img class="default-image" src="images/placeholder-image-square.jpg" alt="placeholder">
+            </div>
+            <div class="column-half">
+              <label for="journal-title">Title</label>
+              <input
+              required
+              name="title"
+              type="text"
+              id="journal-title">
+              <label for="journal-URL">Photo URL</label>
+              <input
+              required
+              name="photo"
+              type="photourl"
+              id="journal-URL">
+            </div>
+            <div class="column-full margin-top">
+              <label for="journal-notes">Notes</label>
+              <textarea
+              required
+              name="notes"
+              id="journal-notes"></textarea>
+            </div>
+            <div class="column-full save-btn">
+              <button>SAVE</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container entry hidden" data-view="entries">
       <div class="row">
         <div class="column-full">
-          <h1>New Entry</h1>
+          <div class="entries-btn">
+            <h1>Entries</h1>
+            <button class="newBtn">NEW</button>
+          </div>
+          <div class="text-center">
+            <p>No entries have been recorded.</p>
+          </div>
         </div>
-        <form class="row">
-          <div class="column-half">
-            <img class="default-image" src="images/placeholder-image-square.jpg" alt="placeholder">
-          </div>
-          <div class="column-half">
-            <label for="journal-title">Title</label>
-            <input
-            required
-            name="title"
-            type="text"
-            id="journal-title">
-            <label for="journal-URL">Photo URL</label>
-            <input
-            required
-            name="photo"
-            type="url"
-            id="journal-URL">
-          </div>
-          <div class="column-full margin-top">
-            <label for="journal-notes">Notes</label>
-            <textarea
-            required
-            name="notes"
-            id="journal-notes">
-            </textarea>
-          </div>
-          <div class="column-full save-btn">
-            <button>SAVE</button>
-          </div>
-        </form>
+        <div class="column-full">
+          <ul class="entry-list">
+          </ul>
+        </div>
       </div>
     </div>
   </main>

@@ -5,6 +5,9 @@ body {
 header {
   background-color: #562b80;
   color: white;
+  padding: auto;
+  margin: auto;
+  width: 100%;
 }
 
 .font-header {
@@ -45,11 +48,13 @@ textarea:focus {
   border: 2px solid #562b80;
 }
 
+.entry-image,
 .default-image {
   border-radius: 5px;
   width: 100%;
 }
 
+.entry-image img,
 .default-image img {
   object-fit: cover;
 }
@@ -78,4 +83,46 @@ button {
   display: flex;
   justify-content: flex-end;
   margin: 1rem 0;
+}
+
+li,
+a {
+  list-style: none;
+}
+
+button:active,
+a:active {
+  transform: translateY(0.25rem);
+}
+
+h4 {
+  margin-left: 1rem;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.entries-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+ul {
+  padding: 0;
+}
+
+p,
+h1 {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+li {
+  margin: auto 0;
 }
