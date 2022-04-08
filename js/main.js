@@ -53,9 +53,17 @@ function newEntries(object) {
   $secondDiv.setAttribute('class', 'column-half');
   $domList.appendChild($secondDiv);
 
+  var $editDiv = document.createElement('div');
+  $editDiv.setAttribute('class', 'flex-justify-end');
+  $secondDiv.appendChild($editDiv);
+
   var $h1 = document.createElement('h1');
   $h1.textContent = object.title;
-  $secondDiv.appendChild($h1);
+  $editDiv.appendChild($h1);
+
+  var $i = document.createElement('i');
+  $i.setAttribute('class', 'fa-solid fa-pencil');
+  $editDiv.appendChild($i);
 
   var $p = document.createElement('p');
   $p.textContent = object.note;
