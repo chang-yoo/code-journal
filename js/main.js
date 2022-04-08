@@ -34,7 +34,7 @@ function handleSubmit(event) {
 }
 $form.addEventListener('submit', handleSubmit);
 
-var $ul = document.querySelector('.domEntry');
+var $ul = document.querySelector('.entry-list');
 
 function newEntries(object) {
   var $domList = document.createElement('li');
