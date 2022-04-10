@@ -7,6 +7,12 @@ var $defaultImage = document.querySelector('.default-image');
 
 var $url = document.querySelector('#journal-URL');
 
+var $title = document.querySelector('#journal-title');
+
+var $note = document.querySelector('#journal-notes');
+
+var $dataEntryId = data.nextEntryId;
+
 $url.addEventListener('input', function updateImage(event) {
   var urlPhoto = $form.elements.photo.value;
   $defaultImage.setAttribute('src', urlPhoto);
@@ -15,22 +21,23 @@ $url.addEventListener('input', function updateImage(event) {
 function handleSubmit(event) {
   event.preventDefault();
 
-  var $titleValue = $form.elements.title.value;
-  var $urlValue = $form.elements.photo.value;
-  var $notesValue = $form.elements.notes.value;
+  var $titleValue = $title.value;
+  var $urlValue = $url.value;
+  var $notesValue = $note.value;
+
   var dataValue = {
     title: $titleValue,
     photo: $urlValue,
     note: $notesValue,
-    nextEntryId: data.nextEntryId
+    entryId: $dataEntryId
   };
+  $dataEntryId++;
   data.entries.unshift(dataValue);
-  data.nextEntryId++;
   $defaultImage.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
+  $ul.prepend(newEntries(dataValue));
   noEntry();
   entriesNav();
-  $ul.prepend(newEntries(dataValue));
 }
 $form.addEventListener('submit', handleSubmit);
 
@@ -39,6 +46,7 @@ var $ul = document.querySelector('.entry-list');
 function newEntries(object) {
   var $domList = document.createElement('li');
   $domList.setAttribute('class', 'domList row');
+  $domList.setAttribute('data-entry-id', object.entryId);
 
   var $firstDiv = document.createElement('div');
   $firstDiv.setAttribute('class', 'column-half');
@@ -78,6 +86,27 @@ window.addEventListener('DOMContentLoaded', function loadEntries(event) {
     $ul.prepend(entryValue);
   }
 });
+
+$ul.addEventListener('click', editForm);
+function editForm(event) {
+  if (event.target.tagName === 'I') {
+    formNav();
+    var $formTitle = document.querySelector('.form-title');
+    $formTitle.textContent = 'Edit Entry';
+    var editClicked = event.target.closest('li');
+  }
+  for (var i = 0; i < data.entries.length; i++) {
+    var editGetEntryId = editClicked.getAttribute('data-entry-id');
+    var editEntryId = data.entries[i].entryId;
+    if (editGetEntryId === editEntryId.toString()) {
+      data.editing = data.entries[i];
+    }
+  }
+  $title.value = data.editing.title;
+  $url.value = data.editing.photo;
+  $note.value = data.editing.note;
+  $defaultImage.setAttribute('src', data.editing.photo);
+}
 
 var $center = document.querySelector('.text-center');
 
