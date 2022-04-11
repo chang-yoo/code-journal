@@ -13,32 +13,49 @@ var $note = document.querySelector('#journal-notes');
 
 var $dataEntryId = data.nextEntryId;
 
+var $formTitle = document.querySelector('.form-title');
+
 $url.addEventListener('input', function updateImage(event) {
-  var urlPhoto = $form.elements.photo.value;
+  var urlPhoto = $url.value;
   $defaultImage.setAttribute('src', urlPhoto);
 });
 
 function handleSubmit(event) {
   event.preventDefault();
 
-  var $titleValue = $title.value;
-  var $urlValue = $url.value;
-  var $notesValue = $note.value;
+  if (data.editing === null) {
+    var dataValue = {
+      title: $title.value,
+      photo: $url.value,
+      note: $note.value,
+      entryId: $dataEntryId
+    };
+    $dataEntryId++;
+    data.entries.unshift(dataValue);
+  } else if (data.editing !== null) {
+    var editValue = {
+      title: $title.value,
+      photo: $url.value,
+      note: $note.value,
+      entryId: data.editing.entryId
+    };
+    var $allList = document.querySelectorAll('li');
 
-  var dataValue = {
-    title: $titleValue,
-    photo: $urlValue,
-    note: $notesValue,
-    entryId: $dataEntryId
-  };
-  $dataEntryId++;
-  data.entries.unshift(dataValue);
+    for (var i = 0; i < $allList.length; i++) {
+      var allListEntryId = parseInt($allList[i].getAttribute('data-entry-id'));
+
+      if (editValue.entryId === allListEntryId) {
+        $allList[i].replaceWith(newEntries(editValue));
+      }
+    }
+    data.editing = null;
+  }
   $defaultImage.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
-  $ul.prepend(newEntries(dataValue));
   noEntry();
   entriesNav();
 }
+
 $form.addEventListener('submit', handleSubmit);
 
 var $ul = document.querySelector('.entry-list');
@@ -87,18 +104,17 @@ window.addEventListener('DOMContentLoaded', function loadEntries(event) {
   }
 });
 
-$ul.addEventListener('click', editForm);
-function editForm(event) {
+$ul.addEventListener('click', editEntries);
+function editEntries(event) {
   if (event.target.tagName === 'I') {
     formNav();
-    var $formTitle = document.querySelector('.form-title');
     $formTitle.textContent = 'Edit Entry';
-    var editClicked = event.target.closest('li');
   }
   for (var i = 0; i < data.entries.length; i++) {
-    var editGetEntryId = editClicked.getAttribute('data-entry-id');
+    var editLi = event.target.closest('li');
+    var editGetEntryId = editLi.getAttribute('data-entry-id');
     var editEntryId = data.entries[i].entryId;
-    if (editGetEntryId === editEntryId.toString()) {
+    if (parseInt(editGetEntryId) === editEntryId) {
       data.editing = data.entries[i];
     }
   }
@@ -131,6 +147,7 @@ function entriesNav() {
 function formNav() {
   $entrypage.className = 'hidden';
   $formpage.className = 'not-hidden';
+  $formTitle.textContent = 'New Entry';
 }
 
 var $anchor = document.querySelector('a');

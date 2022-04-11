@@ -126,3 +126,7 @@ h1 {
 li {
   margin: auto 0;
 }
+
+a:hover {
+  cursor: pointer;
+}
