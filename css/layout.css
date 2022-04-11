@@ -23,16 +23,42 @@
     max-width: 900px;
   }
 
-  .column-full,
-  .column-half {
-    padding: 0 0.75rem;
-  }
-
   .column-half {
     width: 50%;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 }
 
-.padding-left-none {
-  padding-left: 0;
+.flex-justify-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+p,
+h1 {
+  width: 100%;
+  height: auto;
+  margin-top: 0;
+}
+
+.form-title,
+.entries-btn h1 {
+  margin: 1rem 0;
+  height: auto;
+}
+
+.entries-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  padding: 0;
+}
+
+.text-center {
+  text-align: center;
 }

@@ -92,7 +92,7 @@ a {
 
 button:active,
 a:active {
-  transform: translateY(0.25rem);
+  transform: translateY(0.2rem);
 }
 
 h4 {
@@ -107,7 +107,7 @@ h4 {
 .entries-btn {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 }
 
 ul {
@@ -117,12 +117,14 @@ ul {
 p,
 h1 {
   width: 100%;
+  height: auto;
+  margin-top: 0;
 }
 
 .text-center {
   text-align: center;
 }
 
-li {
-  margin: auto 0;
+a:hover {
+  cursor: pointer;
 }
