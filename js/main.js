@@ -11,8 +11,6 @@ var $title = document.querySelector('#journal-title');
 
 var $note = document.querySelector('#journal-notes');
 
-var $dataEntryId = data.nextEntryId;
-
 var $formTitle = document.querySelector('.form-title');
 
 $url.addEventListener('input', function updateImage(event) {
@@ -28,9 +26,9 @@ function handleSubmit(event) {
       title: $title.value,
       photo: $url.value,
       note: $note.value,
-      entryId: $dataEntryId
+      entryId: data.nextEntryId
     };
-    $dataEntryId++;
+    data.nextEntryId++;
     data.entries.unshift(dataValue);
     $ul.prepend(newEntries(dataValue));
   } else {
