@@ -33,7 +33,7 @@ function handleSubmit(event) {
     $dataEntryId++;
     data.entries.unshift(dataValue);
     $ul.prepend(newEntries(dataValue));
-  } else if (data.editing !== null) {
+  } else {
     var editValue = {
       title: $title.value,
       photo: $url.value,
