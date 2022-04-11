@@ -14,8 +14,7 @@ var $note = document.querySelector('#journal-notes');
 var $formTitle = document.querySelector('.form-title');
 
 $url.addEventListener('input', function updateImage(event) {
-  var urlPhoto = $url.value;
-  $defaultImage.setAttribute('src', urlPhoto);
+  $defaultImage.setAttribute('src', $url.value);
 });
 
 function handleSubmit(event) {
