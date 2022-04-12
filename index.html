@@ -56,8 +56,18 @@
               name="notes"
               id="journal-notes"></textarea>
             </div>
-            <div class="column-full save-btn">
-              <button>SAVE</button>
+            <div class="column-full btn-display" id="btnToLeft">
+              <button class="delete hidden">Delete Entry</button>
+              <button class="purple-button">SAVE</button>
+            </div>
+            <div class="position-fixed">
+              <div>
+                <p>Are you sure you wnat to delete this entry?</p>
+              </div>
+              <div>
+                <button>CANCEL</button>
+                <button>CONFIRM</button>
+              </div>
             </div>
           </form>
         </div>
@@ -66,9 +76,9 @@
     <div class="container entry hidden" data-view="entries">
       <div class="row">
         <div class="column-full">
-          <div class="entries-btn">
+          <div class="btn-display">
             <h1>Entries</h1>
-            <button class="newBtn">NEW</button>
+            <button class="purple-button newBtn">NEW</button>
           </div>
           <div class="text-center">
             <p>No entries have been recorded.</p>

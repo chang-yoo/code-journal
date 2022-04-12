@@ -69,7 +69,7 @@ label {
   margin-top: 1.5rem;
 }
 
-button {
+.purple-button {
   background-color: #562b80;
   color: white;
   border-radius: 5px;
@@ -77,12 +77,6 @@ button {
   padding: 0.3rem 1rem;
   font-family: "Open sans", sans-serif;
   font-weight: 400;
-}
-
-.save-btn {
-  display: flex;
-  justify-content: flex-end;
-  margin: 1rem 0;
 }
 
 li,
@@ -104,12 +98,6 @@ h4 {
   display: none;
 }
 
-.entries-btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 ul {
   padding: 0;
 }
@@ -127,4 +115,33 @@ h1 {
 
 a:hover {
   cursor: pointer;
+}
+
+.btn-display {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.btn-display-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.delete {
+  color: #dc2625;
+  border-width: 0 0 2px;
+  border-bottom-color: #dc2625;
+  height: 18px;
+  padding: 0 0.5px;
+}
+
+.position-fixed {
+  position: fixed;
+  display: flex;
+  background-color: white;
 }

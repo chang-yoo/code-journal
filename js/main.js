@@ -115,6 +115,7 @@ function editEntries(event) {
       data.editing = data.entries[i];
     }
   }
+  showDeleteBtn();
   $title.value = data.editing.title;
   $url.value = data.editing.photo;
   $note.value = data.editing.note;
@@ -147,6 +148,7 @@ function formNav() {
   $formTitle.textContent = 'New Entry';
   $form.reset();
   $defaultImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+  hideDeleteBtn();
 }
 
 var $anchor = document.querySelector('a');
@@ -156,3 +158,16 @@ $anchor.addEventListener('click', entriesNav);
 var $new = document.querySelector('.newBtn');
 
 $new.addEventListener('click', formNav);
+
+var $deleteBtn = document.querySelector('.delete');
+var $saveBtnToLeft = document.querySelector('#btnToLeft');
+
+function showDeleteBtn() {
+  $deleteBtn.className = 'delete';
+  $saveBtnToLeft.className = 'column-full btn-display-space-between';
+}
+
+function hideDeleteBtn() {
+  $deleteBtn.className = 'delete hidden';
+  $saveBtnToLeft.className = 'column-full btn-display';
+}
