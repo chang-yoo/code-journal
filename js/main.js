@@ -189,10 +189,9 @@ function popupHidden(event) {
 
 $deleteConfirmButton.addEventListener('click', remove);
 function remove(event) {
-
   for (var i = 0; i < $allList.length; i++) {
     var allListEntryId = parseInt($allList[i].getAttribute('data-entry-id'));
-    if (data.editing === allListEntryId) {
+    if (data.editing.entryId === allListEntryId) {
       $allList[i].remove();
     }
   }
