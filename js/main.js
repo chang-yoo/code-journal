@@ -17,8 +17,6 @@ $url.addEventListener('input', function updateImage(event) {
   $defaultImage.setAttribute('src', $url.value);
 });
 
-var $allList = document.querySelectorAll('li');
-
 function handleSubmit(event) {
   event.preventDefault();
 
@@ -40,6 +38,7 @@ function handleSubmit(event) {
       entryId: data.editing.entryId
     };
 
+    var $allList = document.querySelectorAll('li');
     for (var i = 0; i < $allList.length; i++) {
       var allListEntryId = parseInt($allList[i].getAttribute('data-entry-id'));
 
@@ -189,6 +188,7 @@ function popupHidden(event) {
 
 $deleteConfirmButton.addEventListener('click', remove);
 function remove(event) {
+  var $allList = document.querySelectorAll('li');
   for (var i = 0; i < $allList.length; i++) {
     var allListEntryId = parseInt($allList[i].getAttribute('data-entry-id'));
     if (data.editing.entryId === allListEntryId) {
@@ -197,4 +197,5 @@ function remove(event) {
   }
   popupHidden();
   entriesNav();
+  noEntry();
 }
