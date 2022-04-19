@@ -25,6 +25,23 @@
     </div>
   </header>
   <main>
+    <div class="hidden popup-layout">
+      <div class="popup-container">
+        <div class="popup-box">
+          <div class="center">
+            <h2 class="popup-text">Are you sure you want to delete this entry?</h2>
+          </div>
+          <div class="space-around">
+            <div>
+              <button class="button-cancel">CANCEL</button>
+            </div>
+            <div>
+              <button class="button-confirm">CONFIRM</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container" data-view="entry-form">
       <div class="form-yet-hidden">
         <div class="row">
@@ -56,8 +73,9 @@
               name="notes"
               id="journal-notes"></textarea>
             </div>
-            <div class="column-full save-btn">
-              <button>SAVE</button>
+            <div class="column-full btn-display" id="btnToLeft">
+              <a href="#" class="delete hidden">Delete Entry</a>
+              <button class="purple-button">SAVE</button>
             </div>
           </form>
         </div>
@@ -66,9 +84,9 @@
     <div class="container entry hidden" data-view="entries">
       <div class="row">
         <div class="column-full">
-          <div class="entries-btn">
+          <div class="btn-display">
             <h1>Entries</h1>
-            <button class="newBtn">NEW</button>
+            <button class="purple-button newBtn">NEW</button>
           </div>
           <div class="text-center">
             <p>No entries have been recorded.</p>

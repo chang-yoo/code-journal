@@ -37,8 +37,8 @@ function handleSubmit(event) {
       note: $note.value,
       entryId: data.editing.entryId
     };
-    var $allList = document.querySelectorAll('li');
 
+    var $allList = document.querySelectorAll('li');
     for (var i = 0; i < $allList.length; i++) {
       var allListEntryId = parseInt($allList[i].getAttribute('data-entry-id'));
 
@@ -50,10 +50,8 @@ function handleSubmit(event) {
   }
   $form.reset();
   $defaultImage.setAttribute('src', 'images/placeholder-image-square.jpg');
-  noEntry();
   entriesNav();
 }
-
 $form.addEventListener('submit', handleSubmit);
 
 var $ul = document.querySelector('.entry-list');
@@ -115,6 +113,7 @@ function editEntries(event) {
       data.editing = data.entries[i];
     }
   }
+  showDeleteBtn();
   $title.value = data.editing.title;
   $url.value = data.editing.photo;
   $note.value = data.editing.note;
@@ -125,9 +124,9 @@ var $center = document.querySelector('.text-center');
 
 function noEntry() {
   if (data.entries.length === 0) {
-    $center.setAttribute('class', 'text-center');
+    $center.className = 'text-center';
   } else {
-    $center.setAttribute('class', 'hidden');
+    $center.className = 'hidden';
   }
 }
 
@@ -147,6 +146,8 @@ function formNav() {
   $formTitle.textContent = 'New Entry';
   $form.reset();
   $defaultImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+  hideDeleteBtn();
+
 }
 
 var $anchor = document.querySelector('a');
@@ -156,3 +157,50 @@ $anchor.addEventListener('click', entriesNav);
 var $new = document.querySelector('.newBtn');
 
 $new.addEventListener('click', formNav);
+
+var $anchordeleteBtn = document.querySelector('.delete');
+var $saveBtnToLeft = document.querySelector('#btnToLeft');
+
+function showDeleteBtn() {
+  $anchordeleteBtn.className = 'delete';
+  $saveBtnToLeft.className = 'column-full btn-display-space-between';
+}
+
+function hideDeleteBtn() {
+  $anchordeleteBtn.className = 'delete hidden';
+  $saveBtnToLeft.className = 'column-full btn-display';
+}
+
+var $popupLayout = document.querySelector('.popup-layout');
+var $cancelConfirmButton = document.querySelector('.button-cancel');
+var $deleteConfirmButton = document.querySelector('.button-confirm');
+
+$anchordeleteBtn.addEventListener('click', function (event) {
+  $popupLayout.className = 'popup-layout';
+}
+);
+
+$cancelConfirmButton.addEventListener('click', popupHidden);
+
+function popupHidden(event) {
+  $popupLayout.className = 'hidden';
+}
+
+$deleteConfirmButton.addEventListener('click', remove);
+function remove(event) {
+  var $allList = document.querySelectorAll('li');
+  for (var q = 0; q < $allList.length; q++) {
+    var allListEntryId = parseInt($allList[q].getAttribute('data-entry-id'));
+    if (data.editing.entryId === allListEntryId) {
+      $allList[q].remove();
+    }
+  }
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.editing.entryId === data.entries[i].entryId) {
+      data.entries.splice(i, 1);
+    }
+  }
+  popupHidden();
+  entriesNav();
+  noEntry();
+}
