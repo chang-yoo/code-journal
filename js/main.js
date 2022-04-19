@@ -189,10 +189,15 @@ function popupHidden(event) {
 $deleteConfirmButton.addEventListener('click', remove);
 function remove(event) {
   var $allList = document.querySelectorAll('li');
-  for (var i = 0; i < $allList.length; i++) {
-    var allListEntryId = parseInt($allList[i].getAttribute('data-entry-id'));
+  for (var q = 0; q < $allList.length; q++) {
+    var allListEntryId = parseInt($allList[q].getAttribute('data-entry-id'));
     if (data.editing.entryId === allListEntryId) {
-      $allList[i].remove();
+      $allList[q].remove();
+    }
+  }
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.editing.entryId === data.entries[i].entryId) {
+      data.entries.splice(i, 1);
     }
   }
   popupHidden();
